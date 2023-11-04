@@ -1,34 +1,17 @@
 import { useState } from "react";
 
-const Calculator = () => {
-    const [name, setName] = useState("")
-    const [mobile, setMobile] = useState("")
+const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-
-    const [nameError, setNameError] = useState("")
-    const [mobileError, setMobileError] = useState("")
     const [emailError, setEmailError] = useState("")
     const [passwordError, setPasswordError] = useState("")
-    
+        
     const onButtonClick = () => {
         // Set initial error values to empty
-        setNameError("")
-        setMobileError("")
         setEmailError("")
         setPasswordError("")
 
         // Check if the user has entered both fields correctly
-        if ("" === name) {
-            setNameError("Please enter your name")
-            return
-        }
-
-        if ("" === mobile) {
-            setMobileError("Please enter your mobile")
-            return
-        }
-
         if ("" === email) {
             setEmailError("Please enter your email")
             return
@@ -52,25 +35,7 @@ const Calculator = () => {
 
     return <div className={"mainContainer"}>
         <div className={"titleContainer"}>
-            <div>Register</div>
-        </div>
-        <br />
-        <div className={"inputContainer"}>
-            <input
-                value={name}
-                placeholder="Enter your name here"
-                onChange={ev => setName(ev.target.value)}
-                className={"inputBox"} />
-            <label className="errorLabel">{nameError}</label>
-        </div>
-        <br />
-        <div className={"inputContainer"}>
-            <input
-                value={mobile}
-                placeholder="Enter your mobile here"
-                onChange={ev => setMobile(ev.target.value)}
-                className={"inputBox"} />
-            <label className="errorLabel">{mobileError}</label>
+            <div>Login</div>
         </div>
         <br />
         <div className={"inputContainer"}>
@@ -96,9 +61,9 @@ const Calculator = () => {
                 className={"inputButton"}
                 type="button"
                 onClick={onButtonClick}
-                value={"Calculator"} />
+                value={"Log in"} />
         </div>
     </div>
 }
 
-export default Calculator;
+export default Login

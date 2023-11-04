@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Calculator = () => {
+const Register = () => {
     const [name, setName] = useState("")
     const [mobile, setMobile] = useState("")
     const [email, setEmail] = useState("")
@@ -11,6 +11,8 @@ const Calculator = () => {
     const [emailError, setEmailError] = useState("")
     const [passwordError, setPasswordError] = useState("")
     
+    //const navigate = useNavigate();
+        
     const onButtonClick = () => {
         // Set initial error values to empty
         setNameError("")
@@ -96,9 +98,9 @@ const Calculator = () => {
                 className={"inputButton"}
                 type="button"
                 onClick={onButtonClick}
-                value={"Calculator"} />
+                value={"Register"} />
         </div>
     </div>
 }
 
-export default Calculator;
+export default Register;
