@@ -1,10 +1,11 @@
+from django.utils import timezone
 from django.db import models
 
 
 class Post(models.Model):
     title = models.CharField(max_length=512, blank=False, null=False)
-    body = models.TextField(style={'base_template': 'textarea.html'}, blank=True)
-    post_date = models.DateTimeField()
+    body = models.TextField(blank=True)
+    post_date = models.DateTimeField(default=timezone.now, null=True, blank=True)
     owner = models.ForeignKey(
         "auth.User", 
         on_delete=models.SET_NULL,
@@ -27,6 +28,7 @@ class Crop(models.Model):
     crop_category = models.ForeignKey(
         CropCategory,
         on_delete=models.CASCADE,
+        related_name='crops',
         blank=False,
         null=False
     )

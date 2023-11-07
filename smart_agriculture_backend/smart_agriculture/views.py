@@ -5,10 +5,15 @@ from smart_agriculture.models import (Crop, CropCategory, Division, Fertilizer,
 from smart_agriculture.serializers import (CropCategorySerializer,
                                            CropSerializer, DivisionSerializer,
                                            FertilizerSerializer,
-                                           PostSerializer, ProfileSerializer,
+                                           PostSerializer, ProfileSerializer, UserSerilizer,
                                            ZillaCropFertilizerSerializer,
                                            ZillaSerializer)
+from django.contrib.auth.models import User
 
+
+class UserViewSet(ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerilizer
 
 class CropViewSet(ModelViewSet):
     queryset = Crop.objects.all()
