@@ -46,3 +46,4 @@ class ZillaViewSet(ModelViewSet):
 class ZillaCropFertilizerViewSet(ModelViewSet):
     queryset = ZillaCropFertilizer.objects.all()
     serializer_class = ZillaCropFertilizerSerializer
+    filterset_fields = ['zilla', 'crop']

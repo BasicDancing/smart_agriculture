@@ -56,6 +56,7 @@ class Zilla(models.Model):
     division = models.ForeignKey(
         Division,
         on_delete=models.CASCADE,
+        related_name='zillas',
         blank=False,
         null=False
     )

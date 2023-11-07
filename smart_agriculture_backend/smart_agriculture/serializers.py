@@ -56,7 +56,7 @@ class CropSerializer(serializers.ModelSerializer):
         return super().update(instance, validated_data)
 
 class CropCategorySerializer(serializers.ModelSerializer):
-    crops = serializers.RelatedField(many=True, read_only=True)
+    crops = CropSerializer(many=True, read_only=True)
 
     class Meta:
         model = CropCategory
@@ -93,7 +93,7 @@ class DivisionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Division
-        feilds = '__all__'
+        fields = '__all__'
 
 class ZillaCropFertilizerSerializer(serializers.ModelSerializer):
     zilla = ZillaSerializer(read_only=True)
