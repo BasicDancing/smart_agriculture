@@ -9,6 +9,7 @@ class Post(models.Model):
     owner = models.ForeignKey(
         "auth.User", 
         on_delete=models.SET_NULL,
+        related_name='posts',
         null=True,
         blank=True
     )
@@ -69,18 +70,21 @@ class ZillaCropFertilizer(models.Model):
     zilla = models.ForeignKey(
         Zilla,
         on_delete=models.CASCADE,
+        related_name='zillacropfertilizers',
         null=False,
         blank=False
     )
     crop = models.ForeignKey(
         Crop,
         on_delete=models.CASCADE,
+        related_name='zillacropfertilizers',
         null=False,
         blank=False
     )
     fertilizer = models.ForeignKey(
         Fertilizer,
         on_delete=models.CASCADE,
+        related_name='zillacropfertilizers',
         null=False,
         blank=False
     )
@@ -92,12 +96,14 @@ class Profile(models.Model):
     owner = models.ForeignKey(
         "auth.User", 
         on_delete=models.SET_NULL,
+        related_name='profiles',
         null=True,
         blank=True
     )
     zilla = models.ForeignKey(
         Zilla,
         on_delete=models.CASCADE,
+        related_name='profiles',
         null=False,
         blank=True
     )

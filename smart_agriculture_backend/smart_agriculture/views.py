@@ -9,6 +9,7 @@ from smart_agriculture.serializers import (CropCategorySerializer,
                                            ZillaCropFertilizerSerializer,
                                            ZillaSerializer)
 from django.contrib.auth.models import User
+from rest_framework.response import Response
 
 
 class UserViewSet(ModelViewSet):
@@ -46,4 +47,20 @@ class ZillaViewSet(ModelViewSet):
 class ZillaCropFertilizerViewSet(ModelViewSet):
     queryset = ZillaCropFertilizer.objects.all()
     serializer_class = ZillaCropFertilizerSerializer
-    filterset_fields = ['zilla', 'crop']
+
+    def list(self, request, *args, **kwargs):
+        zilla_value = self.request.query_params.get('zilla', None)
+        crop_value = self.request.query_params.get('crop', None)
+
+        if zilla_value is not None and crop_value is not None:
+            queryset = ZillaCropFertilizer.queryset.filter(zilla=zilla_value, crop=crop_value)
+            fertilizers = list(queryset.values('measure', 'fertilizer').distinct())
+
+            return Response({
+                'zilla' : zilla_value,
+                'crop' : crop_value,
+                'fertilizers' : fertilizers
+            })
+            
+        return super().list(request, *args, **kwargs)
+

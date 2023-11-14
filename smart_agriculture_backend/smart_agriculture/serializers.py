@@ -98,12 +98,11 @@ class DivisionSerializer(serializers.ModelSerializer):
 class ZillaCropFertilizerSerializer(serializers.ModelSerializer):
     zilla = ZillaSerializer(read_only=True)
     crop = CropSerializer(read_only=True)
-    fertilizers = FertilizerSerializer(many=True, read_only=True)
+    fertilizer = FertilizerSerializer(read_only=True)
 
     class Meta:
         model = ZillaCropFertilizer
         fields = '__all__'
-
     def create(self, validated_data):
         request = self.context['request']
 
