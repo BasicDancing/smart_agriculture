@@ -8,6 +8,7 @@ const FertilizerTable = ({ fertilizers, measure}) => {
                 <tr>
                     <th>Fetilizer</th>
                     <th>Symbol</th>
+                    <th>Unit Measure</th>
                     <th>Measure</th>
                     {/* Add more headers based on your data structure */}
                 </tr>
@@ -17,6 +18,7 @@ const FertilizerTable = ({ fertilizers, measure}) => {
                     <tr key={item.id}>
                         <td>{item.fertilizer.name}</td>
                         <td>{item.fertilizer.symbol}</td>
+                        <td>{item.measure}</td>
                         <td>{item.measure * measure}</td>
                         {/* Add more cells based on your data structure */}
                     </tr>
@@ -111,8 +113,6 @@ const CalculatorForm = () => {
                         onClick={onButtonClick}
                         value={"Calculate"} />
                 </div>
-            </div>
-            <div className={"mainContainer"}>
                 <FertilizerTable fertilizers={fertilizers} measure={measure}/>
             </div>
         </>
