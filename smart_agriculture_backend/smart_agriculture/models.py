@@ -5,6 +5,7 @@ from django.db import models
 class Post(models.Model):
     title = models.CharField(max_length=512, blank=False, null=False)
     body = models.TextField(blank=True)
+    photo = models.CharField(max_length=512, null=True)
     post_date = models.DateTimeField(default=timezone.now, null=True, blank=True)
     owner = models.ForeignKey(
         "auth.User", 

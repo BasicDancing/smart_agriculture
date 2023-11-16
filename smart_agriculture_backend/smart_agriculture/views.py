@@ -3,13 +3,14 @@ from smart_agriculture.models import (Crop, CropCategory, Division, Fertilizer,
                                       Post, Profile, Zilla,
                                       ZillaCropFertilizer)
 from smart_agriculture.serializers import (CropCategorySerializer,
-                                           CropSerializer, DivisionSerializer,
+                                           CropSerializer, DivisionSerializer, FertilizerMeasureSerializer,
                                            FertilizerSerializer,
                                            PostSerializer, ProfileSerializer, UserSerilizer,
                                            ZillaCropFertilizerSerializer,
                                            ZillaSerializer)
 from django.contrib.auth.models import User
-from rest_framework.response import Response
+
+from smart_agriculture.filters import ZillaCropFilter
 
 
 class UserViewSet(ModelViewSet):
@@ -48,19 +49,9 @@ class ZillaCropFertilizerViewSet(ModelViewSet):
     queryset = ZillaCropFertilizer.objects.all()
     serializer_class = ZillaCropFertilizerSerializer
 
-    def list(self, request, *args, **kwargs):
-        zilla_value = self.request.query_params.get('zilla', None)
-        crop_value = self.request.query_params.get('crop', None)
+class FertilizerMeasureViewSet(ModelViewSet):
+    queryset = ZillaCropFertilizer.objects.all()
+    serializer_class = FertilizerMeasureSerializer
+    filter_class = ZillaCropFilter
 
-        if zilla_value is not None and crop_value is not None:
-            queryset = ZillaCropFertilizer.queryset.filter(zilla=zilla_value, crop=crop_value)
-            fertilizers = list(queryset.values('measure', 'fertilizer').distinct())
-
-            return Response({
-                'zilla' : zilla_value,
-                'crop' : crop_value,
-                'fertilizers' : fertilizers
-            })
-            
-        return super().list(request, *args, **kwargs)
-
+    

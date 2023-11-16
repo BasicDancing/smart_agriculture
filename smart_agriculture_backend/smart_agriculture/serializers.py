@@ -103,6 +103,7 @@ class ZillaCropFertilizerSerializer(serializers.ModelSerializer):
     class Meta:
         model = ZillaCropFertilizer
         fields = '__all__'
+
     def create(self, validated_data):
         request = self.context['request']
 
@@ -130,6 +131,13 @@ class ZillaCropFertilizerSerializer(serializers.ModelSerializer):
         validated_data['fertilizer_id'] = fertilizer_pk
 
         return super().update(instance, validated_data)
+    
+class FertilizerMeasureSerializer(serializers.ModelSerializer):
+    fertilizer = FertilizerSerializer(read_only=True)
+
+    class Meta:
+        model = ZillaCropFertilizer
+        fields = ['id', 'fertilizer', 'measure']
 
 class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.SerializerMethodField()

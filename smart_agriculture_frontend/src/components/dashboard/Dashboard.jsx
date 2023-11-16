@@ -1,10 +1,9 @@
-import Welcome from "../../pages/Welocme";
+import Post from "../post/Post";
 
 const Dashboard = () => {
     return (
         <>
-            <div>Development in progress!!!</div>
-            <Welcome />
+            <Post />
         </>
     );
 };

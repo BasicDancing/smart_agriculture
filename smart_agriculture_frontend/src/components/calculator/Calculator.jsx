@@ -1,104 +1,131 @@
 import { useState } from "react";
+import "./scss/Calculator.scss"
 
-const Calculator = () => {
-    const [name, setName] = useState("")
-    const [mobile, setMobile] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+const FertilizerTable = ({ fertilizers, measure}) => {
+    return (
+        <table  className="styled-table">
+            <thead>
+                <tr>
+                    <th>Fetilizer</th>
+                    <th>Symbol</th>
+                    <th>Measure</th>
+                    {/* Add more headers based on your data structure */}
+                </tr>
+            </thead>
+            <tbody>
+                {fertilizers.map((item) => (
+                    <tr key={item.id}>
+                        <td>{item.fertilizer.name}</td>
+                        <td>{item.fertilizer.symbol}</td>
+                        <td>{item.measure * measure}</td>
+                        {/* Add more cells based on your data structure */}
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    );
+};
+
+const CalculatorForm = () => {
+    const [crop, setCrop] = useState("")
+    const [zilla, setZilla] = useState("")
+    const [measure, setMeasure] = useState("")
 
     const [nameError, setNameError] = useState("")
     const [mobileError, setMobileError] = useState("")
     const [emailError, setEmailError] = useState("")
-    const [passwordError, setPasswordError] = useState("")
-    
+
+    const [fertilizers, setFertilizers] = useState([]);
+
+    const fetchPost = async ({ zilla, crop }) => {
+        const response = await fetch(
+            `http://127.0.0.1:8000/fertilizermeasures/?zilla__id=${zilla}&crop__id=${crop}`
+        );
+        const data = await response.json();
+        console.log(data);
+        setFertilizers(data);
+    };
+
     const onButtonClick = () => {
         // Set initial error values to empty
-        setNameError("")
-        setMobileError("")
-        setEmailError("")
-        setPasswordError("")
+        // setNameError("")
+        // setMobileError("")
+        // setEmailError("")
 
-        // Check if the user has entered both fields correctly
-        if ("" === name) {
-            setNameError("Please enter your name")
-            return
-        }
+        // // Check if the user has entered both fields correctly
+        // if ("" === name) {
+        //     setNameError("Please enter your name")
+        //     return
+        // }
 
-        if ("" === mobile) {
-            setMobileError("Please enter your mobile")
-            return
-        }
+        // if ("" === mobile) {
+        //     setMobileError("Please enter your mobile")
+        //     return
+        // }
 
-        if ("" === email) {
-            setEmailError("Please enter your email")
-            return
-        }
-
-        if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-            setEmailError("Please enter a valid email")
-            return
-        }
-
-        if ("" === password) {
-            setPasswordError("Please enter a password")
-            return
-        }
-
-        if (password.length < 7) {
-            setPasswordError("The password must be 8 characters or longer")
-            return
-        }
+        // if ("" === email) {
+        //     setEmailError("Please enter your email")
+        //     return
+        // }
+        fetchPost(zilla, crop);
     }
 
-    return <div className={"mainContainer"}>
-        <div className={"titleContainer"}>
-            <div>Register</div>
-        </div>
-        <br />
-        <div className={"inputContainer"}>
-            <input
-                value={name}
-                placeholder="Enter your name here"
-                onChange={ev => setName(ev.target.value)}
-                className={"inputBox"} />
-            <label className="errorLabel">{nameError}</label>
-        </div>
-        <br />
-        <div className={"inputContainer"}>
-            <input
-                value={mobile}
-                placeholder="Enter your mobile here"
-                onChange={ev => setMobile(ev.target.value)}
-                className={"inputBox"} />
-            <label className="errorLabel">{mobileError}</label>
-        </div>
-        <br />
-        <div className={"inputContainer"}>
-            <input
-                value={email}
-                placeholder="Enter your email here"
-                onChange={ev => setEmail(ev.target.value)}
-                className={"inputBox"} />
-            <label className="errorLabel">{emailError}</label>
-        </div>
-        <br />
-        <div className={"inputContainer"}>
-            <input
-                value={password}
-                placeholder="Enter your password here"
-                onChange={ev => setPassword(ev.target.value)}
-                className={"inputBox"} />
-            <label className="errorLabel">{passwordError}</label>
-        </div>
-        <br />
-        <div className={"inputContainer"}>
-            <input
-                className={"inputButton"}
-                type="button"
-                onClick={onButtonClick}
-                value={"Calculator"} />
-        </div>
-    </div>
+    return (
+        <>
+            <div className={"mainContainer"}>
+                <div className={"titleContainer"}>
+                    <div>Calculator</div>
+                </div>
+                <br />
+                <div className={"inputContainer"}>
+                    <input
+                        value={zilla}
+                        placeholder="Enter your zilla here"
+                        onChange={ev => setZilla(ev.target.value)}
+                        className={"inputBox"} />
+                    <label className="errorLabel">{nameError}</label>
+                </div>
+                <br />
+                <div className={"inputContainer"}>
+                    <input
+                        value={crop}
+                        placeholder="Enter your crop here"
+                        onChange={ev => setCrop(ev.target.value)}
+                        className={"inputBox"} />
+                    <label className="errorLabel">{mobileError}</label>
+                </div>
+                <br />
+                <div className={"inputContainer"}>
+                    <input
+                        value={measure}
+                        placeholder="Enter your measure here"
+                        onChange={ev => setMeasure(ev.target.value)}
+                        className={"inputBox"} />
+                    <label className="errorLabel">{emailError}</label>
+                </div>
+                <br />
+                <div className={"inputContainer"}>
+                    <input
+                        className={"inputButton"}
+                        type="button"
+                        onClick={onButtonClick}
+                        value={"Calculate"} />
+                </div>
+            </div>
+            <div className={"mainContainer"}>
+                <FertilizerTable fertilizers={fertilizers} measure={measure}/>
+            </div>
+        </>
+    );
+}
+
+const Calculator = () => {
+
+    return (
+        <>
+            <CalculatorForm />
+        </>
+    );
 }
 
 export default Calculator;
