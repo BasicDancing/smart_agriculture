@@ -49,7 +49,7 @@ const sidebarNavItems = [
 ]
 
 const Sidebar = () => {
-    const [activeIndex, setActiveIndex] = useState(1);
+    const [activeIndex, setActiveIndex] = useState(0);
     const [stepHeight, setStepHeight] = useState(0);
     const sidebarRef = useRef();
     const indicatorRef = useRef();
@@ -102,9 +102,9 @@ const Sidebar = () => {
                         }
                     </div>
                 </div>
-                <div className='sidebar__bottom'>
+                {/* <div className='sidebar__bottom'>
                     <ToggleBtn />
-                </div>
+                </div> */}
             </div>
         </>);
 

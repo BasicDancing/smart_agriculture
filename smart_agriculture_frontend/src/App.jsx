@@ -14,6 +14,12 @@ import Register from './login/Register';
 import Login from './login/Login';
 import Welcome from './pages/Welocme';
 import { useState } from 'react';
+import CropConfigure from './components/configuration/CropConfigure';
+import CropCategoryConfigure from './components/configuration/CropCategoryConfigure';
+import DivisionConfigure from './components/configuration/DivisionConfigure';
+import DistrictConfigure from './components/configuration/DistrictConfigure';
+import FertilizerConfigure from './components/configuration/FertilizerConfigure';
+import PostConfigure from './components/configuration/PostConfigure';
 
 function App() {
 
@@ -31,11 +37,19 @@ function App() {
                     <Route path='/configuration' element={<Configuration />} />
                     <Route path='/calendar' element={<Calendar />} />
                     <Route path='/weather' element={<Weather />} />
-                    <Route path='/user' element={<Blank />} />
+                    <Route path='/user' element={<Login />} />
                     <Route path='/order' element={<Blank />} />
                     <Route path='/register' element={<Register />} />
-                    <Route path="/welcome" element={<Welcome email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
-                    <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
+
+                    <Route path='/crop_category' element={<CropCategoryConfigure />} />
+                    <Route path='/crop' element={<CropConfigure />} />
+                    <Route path='/division' element={<DivisionConfigure />} />
+                    <Route path='/district' element={<DistrictConfigure />} />
+                    <Route path='/fertilizer' element={<FertilizerConfigure />} />
+                    <Route path='/post' element={<PostConfigure />} />
+
+                    {/* <Route path="/welcome" element={<Welcome email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
+                    <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />} /> */}
                 </Route>
             </Routes>
         </BrowserRouter>

@@ -52,6 +52,6 @@ class ZillaCropFertilizerViewSet(ModelViewSet):
 class FertilizerMeasureViewSet(ModelViewSet):
     queryset = ZillaCropFertilizer.objects.all()
     serializer_class = FertilizerMeasureSerializer
-    filter_class = ZillaCropFilter
+    filterset_class = ZillaCropFilter
 
     

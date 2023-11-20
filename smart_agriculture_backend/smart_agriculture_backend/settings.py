@@ -142,5 +142,6 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # or the origin of your frontend application
+    "http://localhost:5173",
+    "http://localhost:5174",  # or the origin of your frontend application
 ]
