@@ -8,7 +8,7 @@ const PostCard = ({ title, body, photo, post_date }) => (
         <h3>{title}</h3>
         <img src={photo} alt={`Image for ${title}`} style={{ maxWidth: '100%' }} />
         <p>{body}</p>
-        <h6>Date: {Moment(post_date).format('d MMM')}</h6>
+        <h6><b>Date: {Moment(post_date).format('MMMM Do YYYY, h:mm:ss a')}</b></h6>
     </div>
 );
 

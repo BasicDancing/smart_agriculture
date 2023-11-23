@@ -1,6 +1,6 @@
 import "./scss/FertilizerTable.scss"
 
-const FertilizerTable = ({ fertilizers, measure}) => {
+const FertilizerTable = ({ fertilizers, measure }) => {
     //console.log(fertilizers, measure)
 
    const convertToKG = (m) =>{
