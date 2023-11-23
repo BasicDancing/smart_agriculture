@@ -20,6 +20,7 @@ import DivisionConfigure from './components/configuration/DivisionConfigure';
 import DistrictConfigure from './components/configuration/DistrictConfigure';
 import FertilizerConfigure from './components/configuration/FertilizerConfigure';
 import PostConfigure from './components/configuration/PostConfigure';
+import CropZillaFertilizerConfigure from './components/configuration/CropZillaFertilizerConfigure';
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
                     <Route path='/district' element={<DistrictConfigure />} />
                     <Route path='/fertilizer' element={<FertilizerConfigure />} />
                     <Route path='/post' element={<PostConfigure />} />
+                    <Route path='/zilla_crop_fertilizer' element={<CropZillaFertilizerConfigure />} />
 
                     {/* <Route path="/welcome" element={<Welcome email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
                     <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />} /> */}

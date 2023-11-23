@@ -34,7 +34,15 @@ class PostSerializer(serializers.ModelSerializer):
 
         return super().update(instance, validated_data)
 
+class CropCategorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CropCategory
+        fields = ['id', 'name']
+
 class CropSerializer(serializers.ModelSerializer):
+    crop_category = CropCategorySerializer(read_only=True)
+
     class Meta:
         model = Crop
         fields = '__all__'
@@ -67,7 +75,15 @@ class FertilizerSerializer(serializers.ModelSerializer):
         model = Fertilizer
         fields = '__all__'
 
+class DivisionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Division
+        fields = ['id', 'name']
+
+
 class ZillaSerializer(serializers.ModelSerializer):
+    division = DivisionSerializer(read_only=True)
+
     class Meta:
         model = Zilla
         fields = '__all__'

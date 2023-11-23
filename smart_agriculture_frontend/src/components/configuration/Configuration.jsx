@@ -32,6 +32,11 @@ const configureItem = [
         display: 'Post Configure',
         to: '/post',
         section: 'post'
+    },
+    {
+        display: 'Zilla Crop Fertilizer Configure',
+        to: '/zilla_crop_fertilizer',
+        section: 'zilla_crop_fertilizer'
     }
 ]
 

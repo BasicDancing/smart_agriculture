@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
+import Moment from 'moment';
 
 // Card component
 // eslint-disable-next-line react/prop-types
-const PostCard = ({ title, body, photo }) => (
+const PostCard = ({ title, body, photo, post_date }) => (
     <div style={{ border: '1px solid #ddd', padding: '10px', margin: '10px', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
         <h3>{title}</h3>
         <img src={photo} alt={`Image for ${title}`} style={{ maxWidth: '100%' }} />
         <p>{body}</p>
+        <h6>Date: {Moment(post_date).format('d MMM')}</h6>
     </div>
 );
 
@@ -18,7 +20,12 @@ const PostList = ({ posts }) => (
         {
             // eslint-disable-next-line react/prop-types
             posts.map(post => (
-                <PostCard key={post.id} title={post.title} body={post.body} photo={post.photo} />
+                <PostCard
+                    key={post.id}
+                    title={post.title}
+                    body={post.body}
+                    photo={post.photo}
+                    post_date={post.post_date} />
             ))
         }
     </div>

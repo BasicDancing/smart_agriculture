@@ -23,8 +23,11 @@ const CalculatorForm = () => {
     const [cropCategories, setCropCategories] = useState([])
     const [crops, setCrops] = useState([])
     const [fertilizers, setFertilizers] = useState([]);
+    const [zillaCropFertilizers, setZillaCropFertilizers] = useState([])
 
-    const { fetchPost } = CropZillaFertilizerGateway();
+    const { fetchPost, postZillaCropFertilizers } = CropZillaFertilizerGateway({ setZillaCropFertilizers });
+    const { postCrop } = CropGateway({ setCrops })
+    const { postZilla } = ZillaGateway({ setZillas })
 
     const onButtonClick = () => {
         // Set initial error values to empty
@@ -47,26 +50,24 @@ const CalculatorForm = () => {
         //     setEmailError("Please enter your email")
         //     return
         // }
-        fetchPost({zilla, crop, setFertilizers});
+        fetchPost({ zilla, crop, setFertilizers });
     }
 
     return (
         <>
-            <ZillaGateway setZillas={setZillas} />
-            <CropGateway setCrops={setCrops} />
-
             <div className={"mainContainer"}>
                 <div className={"titleContainer"}>
                     <div>Calculator</div>
                 </div>
                 <br />
+
                 <div className={"inputContainer"}>
+                    <h5>Select zilla</h5>
                     <select
                         className={"inputBox"}
                         value={zilla}
                         onChange={ev => setZilla(ev.target.value)}>
 
-                        <option value="">Select zilla here</option>
                         {zillas.map(item => (
                             <option key={item.id} value={item.id}>
                                 {item.name}
@@ -77,12 +78,12 @@ const CalculatorForm = () => {
                 </div>
                 <br />
                 <div className={"inputContainer"}>
+                    <h5>Select crop</h5>
                     <select
                         className={"inputBox"}
                         value={crop}
                         onChange={ev => setCrop(ev.target.value)}>
 
-                        <option value="">Select crop here</option>
                         {crops.map(item => (
                             <option key={item.id} value={item.id}>
                                 {item.name}
@@ -95,7 +96,7 @@ const CalculatorForm = () => {
                 <div className={"inputContainer"}>
                     <input
                         value={measure}
-                        placeholder="Enter your measure here"
+                        placeholder="Enter measure here"
                         onChange={ev => setMeasure(ev.target.value)}
                         className={"inputBox"} />
                     <label className="errorLabel">{measureError}</label>
