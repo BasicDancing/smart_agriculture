@@ -16,7 +16,7 @@ const PostCard = ({ title, body, photo, post_date }) => (
 // eslint-disable-next-line react/prop-types
 const PostList = ({ posts }) => (
     <div>
-        <h2>Posts</h2>
+        <h2>Daily Posts</h2>
         {
             // eslint-disable-next-line react/prop-types
             posts.map(post => (
@@ -49,7 +49,6 @@ const Post = () => {
 
     return (
         <div>
-            <h1>React Post Cards</h1>
             <PostList posts={posts} />
         </div>
     );

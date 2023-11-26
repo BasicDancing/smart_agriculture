@@ -5,7 +5,7 @@ import FertilizerGateway from "../../gateway/FertilizerGateway";
 import CropZillaFertilizerGateway from "../../gateway/CropZillaFertilizerGateway";
 import ZillaCropFertilzerView from "../data_view/CropZillaFertilizerView";
 
-const CropZillaFertilizerConfigure = () =>{
+const CropZillaFertilizerConfigure = () => {
     const [zillas, setZillas] = useState([]);
     const [crops, setCrops] = useState([]);
     const [fertilizers, setFertilizers] = useState([])
@@ -26,7 +26,7 @@ const CropZillaFertilizerConfigure = () =>{
 
     const [zillaCropFertilizers, setZillaCropFertilizers] = useState([])
     const [zillaCropFertilizer, setZillaCropFertilizer] = useState([])
-    const { fetchPost, postZillaCropFertilizers } = CropZillaFertilizerGateway({ setZillaCropFertilizers });
+    const { fetchPost, postZillaCropFertilizer } = CropZillaFertilizerGateway({ setZillaCropFertilizers });
 
     const onButtonClick = () => {
         // Set initial error values to empty
@@ -56,7 +56,7 @@ const CropZillaFertilizerConfigure = () =>{
         }
 
         console.log(zillaCropFertilizer)
-        postZillaCropFertilizers({ zillaCropFertilizer })
+        postZillaCropFertilizer({ zillaCropFertilizer })
     }
 
     const handleZilla = (e) => {
@@ -97,73 +97,75 @@ const CropZillaFertilizerConfigure = () =>{
 
     return (
         <>
-            <div className={"mainContainer"}>
-                <div className={"titleContainer"}>
-                    <div>District Crop Fertilizer</div>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <h5>Select zilla</h5>
-                    <select
-                        className={"inputBox"}
-                        value={zilla}
-                        onChange={handleZilla}>
+            <div className="inputTable">
+                <div className={"mainContainer"}>
+                    <div className={"titleContainer"}>
+                        <div>District Crop Fertilizer</div>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <h5>Select zilla</h5>
+                        <select
+                            className={"inputBox"}
+                            value={zilla}
+                            onChange={handleZilla}>
 
-                        {zillas.map(item => (
-                            <option key={item.id} value={item.id}>
-                                {item.name}
-                            </option>
-                        ))}
-                    </select>
-                    <label className="errorLabel">{zillaError}</label>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <h5>Select crop</h5>
-                    <select
-                        className={"inputBox"}
-                        value={crop}
-                        onChange={handleCrop}>
+                            {zillas.map(item => (
+                                <option key={item.id} value={item.id}>
+                                    {item.name}
+                                </option>
+                            ))}
+                        </select>
+                        <label className="errorLabel">{zillaError}</label>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <h5>Select crop</h5>
+                        <select
+                            className={"inputBox"}
+                            value={crop}
+                            onChange={handleCrop}>
 
-                        {crops.map(item => (
-                            <option key={item.id} value={item.id}>
-                                {item.name}
-                            </option>
-                        ))}
-                    </select>
-                    <label className="errorLabel">{cropError}</label>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <h5>Select fertilizer</h5>
-                    <select
-                        className={"inputBox"}
-                        value={fertilizer}
-                        onChange={handleFertilizer}>
+                            {crops.map(item => (
+                                <option key={item.id} value={item.id}>
+                                    {item.name}
+                                </option>
+                            ))}
+                        </select>
+                        <label className="errorLabel">{cropError}</label>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <h5>Select fertilizer</h5>
+                        <select
+                            className={"inputBox"}
+                            value={fertilizer}
+                            onChange={handleFertilizer}>
 
-                        {fertilizers.map(item => (
-                            <option key={item.id} value={item.id}>
-                                {item.name}
-                            </option>
-                        ))}
-                    </select>
-                    <label className="errorLabel">{fertilizerError}</label>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        placeholder="Enter your land measure"
-                        onChange={handleMeasure}
-                        className={"inputBox"} />
-                    <label className="errorLabel">{handleMeasure}</label>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        className={"inputButton"}
-                        type="button"
-                        onClick={onButtonClick}
-                        value={"Submit"} />
+                            {fertilizers.map(item => (
+                                <option key={item.id} value={item.id}>
+                                    {item.name}
+                                </option>
+                            ))}
+                        </select>
+                        <label className="errorLabel">{fertilizerError}</label>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            placeholder="Enter fertilizer measure"
+                            onChange={handleMeasure}
+                            className={"inputBox"} />
+                        <label className="errorLabel">{handleMeasure}</label>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            className={"inputButton"}
+                            type="button"
+                            onClick={onButtonClick}
+                            value={"Submit"} />
+                    </div>
                 </div>
                 <ZillaCropFertilzerView zillaCropFertilzers={zillaCropFertilizers} />
             </div>

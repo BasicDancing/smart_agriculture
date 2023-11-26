@@ -30,25 +30,27 @@ const CropCategoryConfigure = () => {
 
     return (
         <>
-            <div className={"mainContainer"}>
-                <div className={"titleContainer"}>
-                    <div>Crop Category</div>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        placeholder="Enter your corp category here"
-                        onChange={handleChange}
-                        className={"inputBox"} />
-                    <label className="errorLabel">{nameError}</label>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        className={"inputButton"}
-                        type="button"
-                        onClick={onButtonClick}
-                        value={"Submit"} />
+            <div className="inputTable">
+                <div className={"mainContainer"}>
+                    <div className={"titleContainer"}>
+                        <div>Crop Category</div>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            placeholder="Enter your corp category here"
+                            onChange={handleChange}
+                            className={"inputBox"} />
+                        <label className="errorLabel">{nameError}</label>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            className={"inputButton"}
+                            type="button"
+                            onClick={onButtonClick}
+                            value={"Submit"} />
+                    </div>
                 </div>
                 <CropCategoryView cropCategories={corpCategories} />
             </div>

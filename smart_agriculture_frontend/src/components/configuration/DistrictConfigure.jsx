@@ -72,6 +72,7 @@ const DistrictConfigure = () => {
 
     return (
         <>
+            <div className="inputTable">
             <div className={"mainContainer"}>
                 <div className={"titleContainer"}>
                     <div>District</div>
@@ -116,7 +117,8 @@ const DistrictConfigure = () => {
                         onClick={onButtonClick}
                         value={"Submit"} />
                 </div>
-                <DistrictView zillas={zillas} />
+            </div>
+            <DistrictView zillas={zillas} />
             </div>
         </>)
 };

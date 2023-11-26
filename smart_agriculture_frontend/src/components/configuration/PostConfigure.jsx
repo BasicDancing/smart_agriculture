@@ -51,40 +51,42 @@ const PostConfigure = () => {
 
     return (
         <>
-            <div className={"mainContainer"}>
-                <div className={"titleContainer"}>
-                    <div>Daily Post</div>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        placeholder="Enter your title here"
-                        onChange={handleTitle}
-                        className={"inputBox"} />
-                    <label className="errorLabel">{titleError}</label>
-                </div>
-                <br />
-                <h5>Write your post</h5>
-                <div className={"inputContainer"}>
-                    <textarea placeholder="Enter your context here"
-                        onChange={handleBody}
-                        className={"inputBox"}
-                        rows={4} cols={40} />
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        placeholder="Enter your photo here"
-                        onChange={handlePhoto}
-                        className={"inputBox"} />
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        className={"inputButton"}
-                        type="button"
-                        onClick={onButtonClick}
-                        value={"Submit"} />
+            <div className="inputTable">
+                <div className={"mainContainer"}>
+                    <div className={"titleContainer"}>
+                        <div>Daily Post</div>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            placeholder="Enter your title here"
+                            onChange={handleTitle}
+                            className={"inputBox"} />
+                        <label className="errorLabel">{titleError}</label>
+                    </div>
+                    <br />
+                    <h5>Write your post</h5>
+                    <div className={"inputContainer"}>
+                        <textarea placeholder="Enter your context here"
+                            onChange={handleBody}
+                            className={"inputBox"}
+                            rows={4} cols={40} />
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            placeholder="Enter your photo here"
+                            onChange={handlePhoto}
+                            className={"inputBox"} />
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            className={"inputButton"}
+                            type="button"
+                            onClick={onButtonClick}
+                            value={"Submit"} />
+                    </div>
                 </div>
                 <PostView posts={posts} />
             </div>

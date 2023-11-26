@@ -52,33 +52,35 @@ const DivisionConfigure = () => {
 
     return (
         <>
-            <div className={"mainContainer"}>
-                <div className={"titleContainer"}>
-                    <div>Division</div>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        placeholder="Enter your division here"
-                        onChange={handleName}
-                        className={"inputBox"} />
-                    <label className="errorLabel">{nameError}</label>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        placeholder="Enter your office contact here"
-                        onChange={handleOfficeContact}
-                        className={"inputBox"} />
-                    <label className="errorLabel">{officeContactError}</label>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        className={"inputButton"}
-                        type="button"
-                        onClick={onButtonClick}
-                        value={"Submit"} />
+            <div className="inputTable">
+                <div className={"mainContainer"}>
+                    <div className={"titleContainer"}>
+                        <div>Division</div>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            placeholder="Enter your division here"
+                            onChange={handleName}
+                            className={"inputBox"} />
+                        <label className="errorLabel">{nameError}</label>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            placeholder="Enter your office contact here"
+                            onChange={handleOfficeContact}
+                            className={"inputBox"} />
+                        <label className="errorLabel">{officeContactError}</label>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            className={"inputButton"}
+                            type="button"
+                            onClick={onButtonClick}
+                            value={"Submit"} />
+                    </div>
                 </div>
                 <DivisionView divisions={divisions} />
             </div>

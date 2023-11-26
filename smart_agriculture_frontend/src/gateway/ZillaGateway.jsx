@@ -3,20 +3,8 @@ import axios from 'axios';
 
 const ZillaGateway = ({ setZillas }) => {
 
-  const postZilla = async ({ zilla }) => {
-    console.log(zilla);
-    try {
-      const response = axios.post(`http://127.0.0.1:8000/zillas/`, zilla);
-      // Request was successful
-      console.log('Response data:', response.data);
-    } catch (error) {
-      // Handle error
-      console.error('Error:', error.message);
-    }
-  };
-
-  useEffect(() => {
-    // Fetch data from the API
+  //get all districts
+  const getDistricts = async () => {
     axios.get('http://127.0.0.1:8000/zillas/')
       .then(response => {
         setZillas(response.data);
@@ -24,9 +12,28 @@ const ZillaGateway = ({ setZillas }) => {
       .catch(error => {
         console.error('Error fetching data:', error);
       });
+  };
+
+  //post zilla
+  const postZilla = async ({ zilla }) => {
+    console.log(zilla);
+    axios.post(`http://127.0.0.1:8000/zillas/`, zilla)
+      .then(response => {
+        getDistricts();
+        console.log(response.data);
+      }).catch(error => {
+        // Handle error
+        console.error('Error:', error.message);
+      });
+  };
+
+  //render all data
+  useEffect(() => {
+    // Fetch data from the API
+    getDistricts()
   }, []);
 
-  return {postZilla};
+  return { postZilla };
 }
 
 export default ZillaGateway;

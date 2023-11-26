@@ -20,7 +20,7 @@ const DivisionView = ({ divisions }) => {
                             <tr key={item.id}>
                                 <td>{item.id}</td>
                                 <td>{item.name}</td>
-                                <td>{item.office_number}</td>
+                                <td>{item.office_contact}</td>
                                 {/* Add more cells based on your data structure */}
                             </tr>
                         ))}

@@ -74,51 +74,53 @@ const CropConfigure = () => {
 
     return (
         <>
-            <div className={"mainContainer"}>
-                <div className={"titleContainer"}>
-                    <div>Crop</div>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <h5>Select crop category</h5>
-                    <select
-                        className={"inputBox"}
-                        value={cropCategory}
-                        onChange={handleCropCategory}>
+            <div className="inputTable">
+                <div className={"mainContainer"}>
+                    <div className={"titleContainer"}>
+                        <div>Crop</div>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <h5>Select crop category</h5>
+                        <select
+                            className={"inputBox"}
+                            value={cropCategory}
+                            onChange={handleCropCategory}>
 
-                        {cropCategories.map(item => (
-                            <option key={item.id} value={item.id}>
-                                {item.name}
-                            </option>
-                        ))}
-                    </select>
-                    <label className="errorLabel">{cropCetegoryError}</label>
+                            {cropCategories.map(item => (
+                                <option key={item.id} value={item.id}>
+                                    {item.name}
+                                </option>
+                            ))}
+                        </select>
+                        <label className="errorLabel">{cropCetegoryError}</label>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            placeholder="Enter your corp category here"
+                            onChange={handleName}
+                            className={"inputBox"} />
+                        <label className="errorLabel">{nameError}</label>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            placeholder="Enter your corp species here"
+                            onChange={handleSpecies}
+                            className={"inputBox"} />
+                        <label className="errorLabel">{speciesError}</label>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            className={"inputButton"}
+                            type="button"
+                            onClick={onButtonClick}
+                            value={"Submit"} />
+                    </div>
                 </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        placeholder="Enter your corp category here"
-                        onChange={handleName}
-                        className={"inputBox"} />
-                    <label className="errorLabel">{nameError}</label>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        placeholder="Enter your corp species here"
-                        onChange={handleSpecies}
-                        className={"inputBox"} />
-                    <label className="errorLabel">{speciesError}</label>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        className={"inputButton"}
-                        type="button"
-                        onClick={onButtonClick}
-                        value={"Submit"} />
-                </div>
-                <CropView crops={crops}/>
+                <CropView crops={crops} />
             </div>
         </>)
 };

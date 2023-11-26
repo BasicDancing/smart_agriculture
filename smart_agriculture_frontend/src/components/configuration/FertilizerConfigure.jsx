@@ -43,32 +43,34 @@ const FertilizerConfigure = () => {
 
     return (
         <>
-            <div className={"mainContainer"}>
-                <div className={"titleContainer"}>
-                    <div>Fertilizer</div>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        placeholder="Enter name here"
-                        onChange={handleName}
-                        className={"inputBox"} />
-                    <label className="errorLabel">{nameError}</label>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        placeholder="Enter symbol here"
-                        onChange={handleSymbol}
-                        className={"inputBox"} />
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        className={"inputButton"}
-                        type="button"
-                        onClick={onButtonClick}
-                        value={"Submit"} />
+            <div className="inputTable">
+                <div className={"mainContainer"}>
+                    <div className={"titleContainer"}>
+                        <div>Fertilizer</div>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            placeholder="Enter name here"
+                            onChange={handleName}
+                            className={"inputBox"} />
+                        <label className="errorLabel">{nameError}</label>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            placeholder="Enter symbol here"
+                            onChange={handleSymbol}
+                            className={"inputBox"} />
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            className={"inputButton"}
+                            type="button"
+                            onClick={onButtonClick}
+                            value={"Submit"} />
+                    </div>
                 </div>
                 <FertilizerView fertilizers={fertilizers} />
             </div>
