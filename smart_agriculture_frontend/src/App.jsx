@@ -9,7 +9,6 @@ import Calculator from './components/calculator/Calculator';
 import Dashboard from './components/dashboard/Dashboard';
 import Configuration from './components/configuration/Configuration';
 import Weather from './components/weather/Weather';
-import Calendar from './components/calender/Calender';
 import Register from './login/Register';
 import Login from './login/Login';
 import Welcome from './pages/Welocme';
@@ -21,6 +20,7 @@ import DistrictConfigure from './components/configuration/DistrictConfigure';
 import FertilizerConfigure from './components/configuration/FertilizerConfigure';
 import PostConfigure from './components/configuration/PostConfigure';
 import CropZillaFertilizerConfigure from './components/configuration/CropZillaFertilizerConfigure';
+import CustomCalendar from './components/calender/CustomCalendar';
 
 function App() {
 
@@ -36,7 +36,7 @@ function App() {
                     <Route path='/home' element={<Home />} />
                     <Route path='/calculator' element={<Calculator />} />
                     <Route path='/configuration' element={<Configuration />} />
-                    <Route path='/calendar' element={<Calendar />} />
+                    <Route path='/calendar' element={<CustomCalendar />} />
                     <Route path='/weather' element={<Weather />} />
                     <Route path='/user' element={<Login />} />
                     <Route path='/order' element={<Blank />} />
