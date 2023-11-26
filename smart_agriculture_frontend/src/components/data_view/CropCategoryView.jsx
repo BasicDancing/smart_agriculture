@@ -1,28 +1,9 @@
 import "./DataTable.scss"
-import { useState } from "react";
 
 const CropCategoryView = ({ cropCategories, deleteCropCategory }) => {
 
-    const [rows, setRows] = useState([
-        { name: 'Alice', email: 'alice@example.com', editing: false },
-        { name: 'Michael', email: 'michael@example.com', editing: false },
-        { name: 'Emily', email: 'emily@example.com', editing: false },
-        { name: 'David', email: 'david@example.com', editing: false },
-        { name: 'Sarah', email: 'sarah@example.com', editing: false },
-        { name: 'Daniel', email: 'daniel@example.com', editing: false },
-        { name: 'Olivia', email: 'olivia@example.com', editing: false },
-        { name: 'Andrew', email: 'andrew@example.com', editing: false }
-    ]);
-
-    const editRow = (row) => {
-        const updatedRows = rows.map((r) => {
-            if (r === row) {
-                return { ...r, editing: true };
-            }
-            return r;
-        });
-        setRows(updatedRows);
-    };
+    //serial no
+    var sl = 0;
 
     return (
         <>
@@ -31,7 +12,7 @@ const CropCategoryView = ({ cropCategories, deleteCropCategory }) => {
                 <table className="styled-table">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>Sl</th>
                             <th>Category Name</th>
                             <th>Action</th>
                             {/* Add more headers based on your data structure */}
@@ -40,7 +21,7 @@ const CropCategoryView = ({ cropCategories, deleteCropCategory }) => {
                     <tbody>
                         {cropCategories.map((item) => (
                             <tr key={item.id}>
-                                <td>{item.id}</td>
+                                <td>{++sl}</td>
                                 <td>{item.name}</td>
                                 
                                 <td className="actionArea">

@@ -2,6 +2,9 @@ import "./DataTable.scss"
 
 const PostView = ({ posts, deletePost }) => {
 
+    //serial no
+    var sl = 0;
+
     return (
         <>
             <div>
@@ -9,7 +12,7 @@ const PostView = ({ posts, deletePost }) => {
                 <table className="styled-table">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>Sl</th>
                             <th>Title</th>
                             <th>Action</th>
                             {/* Add more headers based on your data structure */}
@@ -18,7 +21,7 @@ const PostView = ({ posts, deletePost }) => {
                     <tbody>
                         {posts.map((item) => (
                             <tr key={item.id}>
-                                <td>{item.id}</td>
+                                <td>{++sl}</td>
                                 <td>{item.title}</td>
 
                                 <td className="actionArea">

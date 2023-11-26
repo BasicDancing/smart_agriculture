@@ -2,6 +2,9 @@ import "./DataTable.scss"
 
 const DistrictView = ({ zillas, deleteZilla }) => {
 
+    //serial no
+    var sl = 0;
+
     return (
         <>
             <div>
@@ -9,7 +12,7 @@ const DistrictView = ({ zillas, deleteZilla }) => {
                 <table className="styled-table">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>Sl</th>
                             <th>Name</th>
                             <th>Office Number</th>
                             <th>Division</th>
@@ -20,7 +23,7 @@ const DistrictView = ({ zillas, deleteZilla }) => {
                     <tbody>
                         {zillas.map((item) => (
                             <tr key={item.id}>
-                                <td>{item.id}</td>
+                                <td>{++sl}</td>
                                 <td>{item.name}</td>
                                 <td>{item.office_contact}</td>
                                 <td>{item.division.name}</td>

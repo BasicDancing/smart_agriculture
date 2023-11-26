@@ -2,6 +2,9 @@ import "./DataTable.scss"
 
 const FertilizerView = ({ fertilizers, deleteFertilizer }) => {
 
+    //serial no
+    var sl = 0;
+
     return (
         <>
             <div>
@@ -9,7 +12,7 @@ const FertilizerView = ({ fertilizers, deleteFertilizer }) => {
                 <table className="styled-table">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>Sl</th>
                             <th>Name</th>
                             <th>Symbol</th>
                             <th>Action</th>
@@ -19,7 +22,7 @@ const FertilizerView = ({ fertilizers, deleteFertilizer }) => {
                     <tbody>
                         {fertilizers.map((item) => (
                             <tr key={item.id}>
-                                <td>{item.id}</td>
+                                <td>{++sl}</td>
                                 <td>{item.name}</td>
                                 <td>{item.symbol}</td>
 

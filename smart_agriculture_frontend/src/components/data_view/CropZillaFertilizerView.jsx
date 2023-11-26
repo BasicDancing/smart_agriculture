@@ -1,8 +1,11 @@
 import "./DataTable.scss"
 
-const ZillaCropFertilzerView = ({ 
-    zillaCropFertilzers, 
+const ZillaCropFertilzerView = ({
+    zillaCropFertilzers,
     deleteZillaCropFertilizer }) => {
+
+    //serial no
+    var sl = 0;
 
     return (
         <>
@@ -11,7 +14,7 @@ const ZillaCropFertilzerView = ({
                 <table className="styled-table">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>Sl</th>
                             <th>Zilla</th>
                             <th>Crop</th>
                             <th>Fertilizer</th>
@@ -23,7 +26,7 @@ const ZillaCropFertilzerView = ({
                     <tbody>
                         {zillaCropFertilzers.map((item) => (
                             <tr key={item.id}>
-                                <td>{item.id}</td>
+                                <td>{++sl}</td>
                                 <td>{item.zilla.name}</td>
                                 <td>{item.crop.name}</td>
                                 <td>{item.fertilizer.name}</td>

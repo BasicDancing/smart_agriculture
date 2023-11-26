@@ -2,6 +2,9 @@ import "./DataTable.scss"
 
 const CropView = ({ crops, deleteCrop }) => {
 
+    //serial no
+    var sl = 0;
+
     return (
         <>
             <div>
@@ -9,7 +12,7 @@ const CropView = ({ crops, deleteCrop }) => {
                 <table className="styled-table">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>Sl</th>
                             <th>Name</th>
                             <th>Category Name</th>
                             <th>Species</th>
@@ -20,7 +23,7 @@ const CropView = ({ crops, deleteCrop }) => {
                     <tbody>
                         {crops.map((item) => (
                             <tr key={item.id}>
-                                <td>{item.id}</td>
+                                <td>{++sl}</td>
                                 <td>{item.name}</td>
                                 <td>{item.crop_category.name}</td>
                                 <td>{item.species}</td>
