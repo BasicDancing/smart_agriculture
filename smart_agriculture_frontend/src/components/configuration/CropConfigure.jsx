@@ -4,7 +4,7 @@ import CropGateway from "../../gateway/CropGateway";
 import CropCategoryGateway from "../../gateway/CropCategoryGateway";
 
 const CropConfigure = () => {
-    const [cropCategory, setCropCategory] = useState("");
+    const [cropCategory, setCropCategory] = useState(0);
     const [cropCategories, setCropCategories] = useState([]);
     const [name, setName] = useState("");
     const [species, setSpecies] = useState("");
@@ -15,8 +15,12 @@ const CropConfigure = () => {
     const [nameError, setNameError] = useState("");
     const [speciesError, setSpeciesError] = useState("");
 
-    const { postCrop } = CropGateway({ setCrops });
-    const { postCropCategory } = CropCategoryGateway({ setCropCategories });
+    //Gateway
+    const {
+        postCrop,
+        deleteCrop
+    } = CropGateway({ setCrops });
+    CropCategoryGateway({ setCropCategories });
 
     const onButtonClick = () => {
         // Set initial error values to empty
@@ -87,6 +91,7 @@ const CropConfigure = () => {
                             value={cropCategory}
                             onChange={handleCropCategory}>
 
+                            <option value="">Select crop category</option>
                             {cropCategories.map(item => (
                                 <option key={item.id} value={item.id}>
                                     {item.name}
@@ -120,7 +125,9 @@ const CropConfigure = () => {
                             value={"Submit"} />
                     </div>
                 </div>
-                <CropView crops={crops} />
+                <CropView
+                    crops={crops} 
+                    deleteCrop={deleteCrop}/>
             </div>
         </>)
 };

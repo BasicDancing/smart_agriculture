@@ -11,7 +11,11 @@ const DivisionConfigure = () => {
     const [nameError, setNameError] = useState("")
     const [officeContactError, setOfficeContactError] = useState("")
 
-    const { postDivision } = DivisionGateway({ setDivisions })
+    //Gateway
+    const {
+        postDivision,
+        deleteDivision
+    } = DivisionGateway({ setDivisions })
 
     const onButtonClick = () => {
         // Set initial error values to empty
@@ -82,7 +86,9 @@ const DivisionConfigure = () => {
                             value={"Submit"} />
                     </div>
                 </div>
-                <DivisionView divisions={divisions} />
+                <DivisionView
+                    divisions={divisions} 
+                    deleteDivision={deleteDivision} />
             </div>
         </>)
 };

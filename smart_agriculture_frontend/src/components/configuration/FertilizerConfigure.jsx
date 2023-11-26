@@ -9,7 +9,11 @@ const FertilizerConfigure = () => {
 
     const [nameError, setNameError] = useState("")
 
-    const { postFertilizer } = FertilizerGateway({ setFertilizers })
+    //Gateway
+    const {
+        postFertilizer,
+        deleteFertilizer
+    } = FertilizerGateway({ setFertilizers })
 
     const onButtonClick = () => {
         // Set initial error values to empty
@@ -72,7 +76,9 @@ const FertilizerConfigure = () => {
                             value={"Submit"} />
                     </div>
                 </div>
-                <FertilizerView fertilizers={fertilizers} />
+                <FertilizerView
+                    fertilizers={fertilizers} 
+                    deleteFertilizer={deleteFertilizer}/>
             </div>
         </>)
 };

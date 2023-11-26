@@ -37,13 +37,32 @@ const CropZillaFertilizerGateway = ({ setZillaCropFertilizers }) => {
     setFertilizers(data);
   };
 
+  //delete crop district fertilizer
+  const deleteZillaCropFertilizer = async ({ zillaCropFertilizer }) => {
+    console.log(zillaCropFertilizer);
+    axios.delete(`http://127.0.0.1:8000/zillacropfertilizers/${zillaCropFertilizer.id}/`)
+      .then(response => {
+        //re render data again!
+        getZillaCropFertilizers();
+        console.log(response.data);
+      }).catch(error => {
+        // Handle error
+        console.error('Error:', error.message);
+      });
+  };
+
+
   //get data in every render
   useEffect(() => {
     // Fetch data from the API
     getZillaCropFertilizers();
   }, []);
 
-  return { fetchPost, postZillaCropFertilizer };
+  return { 
+    fetchPost, 
+    postZillaCropFertilizer, 
+    deleteZillaCropFertilizer
+  };
 };
 
 export default CropZillaFertilizerGateway;

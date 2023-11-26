@@ -27,13 +27,31 @@ const CropGateway = ({ setCrops }) => {
       });
   };
 
+  //delete crop
+  const deleteCrop = async ({ crop }) => {
+    console.log(crop);
+    axios.delete(`http://127.0.0.1:8000/crops/${crop.id}/`)
+      .then(response => {
+        //re render data again!
+        getCrops();
+        console.log(response.data);
+      }).catch(error => {
+        // Handle error
+        console.error('Error:', error.message);
+      });
+  };
+
+
   // render in every change
   useEffect(() => {
     // Fetch data from the API
     getCrops()
   }, []);
 
-  return { postCrop };
+  return { 
+    postCrop, 
+    deleteCrop 
+  };
 }
 
 export default CropGateway;

@@ -1,6 +1,6 @@
 import "./DataTable.scss"
 
-const DistrictView = ({ zillas }) => {
+const DistrictView = ({ zillas, deleteZilla }) => {
 
     return (
         <>
@@ -13,6 +13,7 @@ const DistrictView = ({ zillas }) => {
                             <th>Name</th>
                             <th>Office Number</th>
                             <th>Division</th>
+                            <th>Action</th>
                             {/* Add more headers based on your data structure */}
                         </tr>
                     </thead>
@@ -23,6 +24,20 @@ const DistrictView = ({ zillas }) => {
                                 <td>{item.name}</td>
                                 <td>{item.office_contact}</td>
                                 <td>{item.division.name}</td>
+
+                                <td className="actionArea">
+                                    <button className="edit-button"
+                                        onClick={() => editRow(item)}>
+
+                                        <i className='bx bx-message-square-edit'></i>
+                                    </button>
+                                    <button
+                                        className="delete-button"
+                                        onClick={() => deleteZilla({ zilla: item })}>
+
+                                        <i className='bx bx-message-square-x'></i>
+                                    </button>
+                                </td>
                                 {/* Add more cells based on your data structure */}
                             </tr>
                         ))}

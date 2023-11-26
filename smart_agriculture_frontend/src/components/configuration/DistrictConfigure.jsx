@@ -7,7 +7,7 @@ const DistrictConfigure = () => {
     const [zilla, setZilla] = useState([]);
     const [name, setName] = useState("");
     const [officeContact, setOfficeContact] = useState("");
-    const [division, setDivision] = useState([]);
+    const [division, setDivision] = useState(0);
     const [zillas, setZillas] = useState([])
     const [divisions, setDivisions] = useState([]);
 
@@ -15,8 +15,12 @@ const DistrictConfigure = () => {
     const [officeContactError, setOfficeContactError] = useState("")
     const [divisionError, setDivisionError] = useState("")
 
-    const { postZilla } = ZillaGateway({ setZillas })
-    const { postDivision } = DivisionGateway({ setDivisions })
+    //Gateway
+    const {
+        postZilla,
+        deleteZilla
+    } = ZillaGateway({ setZillas })
+    DivisionGateway({ setDivisions })
 
     const onButtonClick = () => {
         // Set initial error values to empty
@@ -33,7 +37,7 @@ const DistrictConfigure = () => {
             setOfficeContactError("Please enter office contact")
             return
         }
-        
+
         if ("" === division) {
             setDivisionError("Select division")
             return
@@ -73,52 +77,55 @@ const DistrictConfigure = () => {
     return (
         <>
             <div className="inputTable">
-            <div className={"mainContainer"}>
-                <div className={"titleContainer"}>
-                    <div>District</div>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <h5>Select division</h5>
-                    <select
-                        className={"inputBox"}
-                        value={division}
-                        onChange={handleDivision}>
+                <div className={"mainContainer"}>
+                    <div className={"titleContainer"}>
+                        <div>District</div>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <h5>Select division</h5>
+                        <select
+                            className={"inputBox"}
+                            value={division}
+                            onChange={handleDivision}>
 
-                        {divisions.map(item => (
-                            <option key={item.id} value={item.id}>
-                                {item.name}
-                            </option>
-                        ))}
-                    </select>
-                    <label className="errorLabel">{divisionError}</label>
+                            <option value="">Select division</option>
+                            {divisions.map(item => (
+                                <option key={item.id} value={item.id}>
+                                    {item.name}
+                                </option>
+                            ))}
+                        </select>
+                        <label className="errorLabel">{divisionError}</label>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            placeholder="Enter your district here"
+                            onChange={handleName}
+                            className={"inputBox"} />
+                        <label className="errorLabel">{nameError}</label>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            placeholder="Enter your office contact here"
+                            onChange={handleOfficeContact}
+                            className={"inputBox"} />
+                        <label className="errorLabel">{officeContactError}</label>
+                    </div>
+                    <br />
+                    <div className={"inputContainer"}>
+                        <input
+                            className={"inputButton"}
+                            type="button"
+                            onClick={onButtonClick}
+                            value={"Submit"} />
+                    </div>
                 </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        placeholder="Enter your district here"
-                        onChange={handleName}
-                        className={"inputBox"} />
-                    <label className="errorLabel">{nameError}</label>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        placeholder="Enter your office contact here"
-                        onChange={handleOfficeContact}
-                        className={"inputBox"} />
-                    <label className="errorLabel">{officeContactError}</label>
-                </div>
-                <br />
-                <div className={"inputContainer"}>
-                    <input
-                        className={"inputButton"}
-                        type="button"
-                        onClick={onButtonClick}
-                        value={"Submit"} />
-                </div>
-            </div>
-            <DistrictView zillas={zillas} />
+                <DistrictView
+                    zillas={zillas} 
+                    deleteZilla={deleteZilla} />
             </div>
         </>)
 };

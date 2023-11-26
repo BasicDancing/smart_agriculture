@@ -29,3 +29,49 @@
 .styled-table tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
 }
+
+.actionArea{
+    width: 12vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+button {
+    border: none;
+    border-radius: 40%;
+}
+
+
+.edit-button{
+    background-color: yellow;
+    height: fit-content;
+
+    i {
+        font-size: 30px;   
+        color: #ffffff;
+    }
+
+    :hover{
+        background-color: #009879;
+        border: none;
+        border-radius: 40%;
+        height: fit-content;
+    }
+}
+
+.delete-button{
+    background-color: rgb(202, 0, 165);
+    height: fit-content;
+
+    i {
+        font-size: 30px;
+        color: #ffffff; 
+    }
+    :hover{
+        background-color: #ff002b;
+        border: none;
+        border-radius: 40%;
+        height: fit-content;
+    }
+}

@@ -1,6 +1,6 @@
 import "./DataTable.scss"
 
-const PostView = ({ posts }) => {
+const PostView = ({ posts, deletePost }) => {
 
     return (
         <>
@@ -11,6 +11,7 @@ const PostView = ({ posts }) => {
                         <tr>
                             <th>Id</th>
                             <th>Title</th>
+                            <th>Action</th>
                             {/* Add more headers based on your data structure */}
                         </tr>
                     </thead>
@@ -19,6 +20,20 @@ const PostView = ({ posts }) => {
                             <tr key={item.id}>
                                 <td>{item.id}</td>
                                 <td>{item.title}</td>
+
+                                <td className="actionArea">
+                                    <button className="edit-button"
+                                        onClick={() => editRow(item)}>
+
+                                        <i className='bx bx-message-square-edit'></i>
+                                    </button>
+                                    <button
+                                        className="delete-button"
+                                        onClick={() => deletePost({ post: item })}>
+
+                                        <i className='bx bx-message-square-x'></i>
+                                    </button>
+                                </td>
                                 {/* Add more cells based on your data structure */}
                             </tr>
                         ))}

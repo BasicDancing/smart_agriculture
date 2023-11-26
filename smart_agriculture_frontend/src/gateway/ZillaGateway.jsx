@@ -27,13 +27,30 @@ const ZillaGateway = ({ setZillas }) => {
       });
   };
 
+  //delete district
+  const deleteZilla = async ({ zilla }) => {
+    console.log(zilla);
+    axios.delete(`http://127.0.0.1:8000/zillas/${zilla.id}/`)
+      .then(response => {
+        //re render data again!
+        getDistricts();
+        console.log(response.data);
+      }).catch(error => {
+        // Handle error
+        console.error('Error:', error.message);
+      });
+  };
+
   //render all data
   useEffect(() => {
     // Fetch data from the API
     getDistricts()
   }, []);
 
-  return { postZilla };
+  return { 
+    postZilla,
+    deleteZilla
+  };
 }
 
 export default ZillaGateway;

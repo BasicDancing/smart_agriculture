@@ -27,13 +27,30 @@ const DivisionGateway = ({ setDivisions }) => {
       })
   };
 
+  //delete division
+  const deleteDivision = async ({ division }) => {
+    console.log(division);
+    axios.delete(`http://127.0.0.1:8000/divisions/${division.id}/`)
+      .then(response => {
+        //re render data again!
+        getDivisions();
+        console.log(response.data);
+      }).catch(error => {
+        // Handle error
+        console.error('Error:', error.message);
+      });
+  };
+
   // get data in every render
   useEffect(() => {
     // Fetch data from the API
     getDivisions();
   }, []);
 
-  return { postDivision };
+  return { 
+    postDivision,
+    deleteDivision
+  };
 }
 
 export default DivisionGateway;

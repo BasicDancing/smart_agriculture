@@ -28,13 +28,30 @@ const CropCategoryGateway = ({ setCropCategories }) => {
       });
   };
 
+  //delete crop category
+  const deleteCropCategory = async ({ cropCategory }) => {
+    console.log(cropCategory);
+    axios.delete(`http://127.0.0.1:8000/cropcategories/${cropCategory.id}/`)
+      .then(response => {
+        //re render data again!
+        getCropCategories();
+        console.log(response.data);
+      }).catch(error => {
+        // Handle error
+        console.error('Error:', error.message);
+      });
+  };
+
   //Render every change!
   useEffect(() => {
     // Fetch data from the API
     getCropCategories();
   }, []);
 
-  return { postCropCategory };
+  return { 
+    postCropCategory, 
+    deleteCropCategory
+  };
 }
 
 export default CropCategoryGateway;

@@ -1,6 +1,6 @@
 import "./DataTable.scss"
 
-const DivisionView = ({ divisions }) => {
+const DivisionView = ({ divisions, deleteDivision}) => {
 
     return (
         <>
@@ -12,6 +12,7 @@ const DivisionView = ({ divisions }) => {
                             <th>Id</th>
                             <th>Name</th>
                             <th>Office Number</th>
+                            <th>Action</th>
                             {/* Add more headers based on your data structure */}
                         </tr>
                     </thead>
@@ -21,6 +22,20 @@ const DivisionView = ({ divisions }) => {
                                 <td>{item.id}</td>
                                 <td>{item.name}</td>
                                 <td>{item.office_contact}</td>
+
+                                <td className="actionArea">
+                                    <button className="edit-button"
+                                        onClick={() => editRow(item)}>
+
+                                        <i className='bx bx-message-square-edit'></i>
+                                    </button>
+                                    <button
+                                        className="delete-button"
+                                        onClick={() => deleteDivision({ division: item })}>
+
+                                        <i className='bx bx-message-square-x'></i>
+                                    </button>
+                                </td>
                                 {/* Add more cells based on your data structure */}
                             </tr>
                         ))}

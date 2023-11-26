@@ -1,6 +1,6 @@
 import "./DataTable.scss"
 
-const FertilizerView = ({ fertilizers }) => {
+const FertilizerView = ({ fertilizers, deleteFertilizer }) => {
 
     return (
         <>
@@ -12,6 +12,7 @@ const FertilizerView = ({ fertilizers }) => {
                             <th>Id</th>
                             <th>Name</th>
                             <th>Symbol</th>
+                            <th>Action</th>
                             {/* Add more headers based on your data structure */}
                         </tr>
                     </thead>
@@ -21,6 +22,20 @@ const FertilizerView = ({ fertilizers }) => {
                                 <td>{item.id}</td>
                                 <td>{item.name}</td>
                                 <td>{item.symbol}</td>
+
+                                <td className="actionArea">
+                                    <button className="edit-button"
+                                        onClick={() => editRow(item)}>
+
+                                        <i className='bx bx-message-square-edit'></i>
+                                    </button>
+                                    <button
+                                        className="delete-button"
+                                        onClick={() => deleteFertilizer({ fertilizer: item })}>
+
+                                        <i className='bx bx-message-square-x'></i>
+                                    </button>
+                                </td>
                                 {/* Add more cells based on your data structure */}
                             </tr>
                         ))}

@@ -27,13 +27,30 @@ const PostGateway = ({ setPosts }) => {
       });
   };
 
+  //delete post
+  const deletePost = async ({ post }) => {
+    console.log(post);
+    axios.delete(`http://127.0.0.1:8000/posts/${post.id}/`)
+      .then(response => {
+        //re render data again!
+        getPosts();
+        console.log(response.data);
+      }).catch(error => {
+        // Handle error
+        console.error('Error:', error.message);
+      });
+  };
+
   //render all data
   useEffect(() => {
     // Fetch data from the API
     getPosts();
   }, []);
 
-  return { postPost };
+  return { 
+    postPost,
+    deletePost 
+  };
 }
 
 export default PostGateway;

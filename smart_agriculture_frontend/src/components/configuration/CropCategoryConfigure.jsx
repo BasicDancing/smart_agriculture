@@ -8,7 +8,10 @@ const CropCategoryConfigure = () => {
 
     const [nameError, setNameError] = useState("")
 
-    const { postCropCategory } = CropCategoryGateway({ setCropCategories })
+    const { 
+        postCropCategory, 
+        deleteCropCategory 
+    } = CropCategoryGateway({ setCropCategories })
 
     const onButtonClick = () => {
         // Set initial error values to empty
@@ -52,7 +55,9 @@ const CropCategoryConfigure = () => {
                             value={"Submit"} />
                     </div>
                 </div>
-                <CropCategoryView cropCategories={corpCategories} />
+                <CropCategoryView 
+                    cropCategories={corpCategories}
+                    deleteCropCategory={deleteCropCategory}/>
             </div>
         </>)
 };

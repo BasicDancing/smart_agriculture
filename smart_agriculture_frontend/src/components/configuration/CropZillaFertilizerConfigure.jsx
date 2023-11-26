@@ -10,14 +10,10 @@ const CropZillaFertilizerConfigure = () => {
     const [crops, setCrops] = useState([]);
     const [fertilizers, setFertilizers] = useState([])
 
-    const { postZilla } = ZillaGateway({ setZillas });
-    const { postCrop } = CropGateway({ setCrops });
-    const { postFertilizer } = FertilizerGateway({ setFertilizers });
-
-    const [measure, setMeasure] = useState("");
-    const [zilla, setZilla] = useState("");
-    const [crop, setCrop] = useState("");
-    const [fertilizer, setFertilizer] = useState("")
+    const [measure, setMeasure] = useState(0.0);
+    const [zilla, setZilla] = useState(0);
+    const [crop, setCrop] = useState(0);
+    const [fertilizer, setFertilizer] = useState(0)
 
     const [measureError, setMeasureError] = useState("");
     const [zillaError, setZillaError] = useState("");
@@ -26,7 +22,16 @@ const CropZillaFertilizerConfigure = () => {
 
     const [zillaCropFertilizers, setZillaCropFertilizers] = useState([])
     const [zillaCropFertilizer, setZillaCropFertilizer] = useState([])
-    const { fetchPost, postZillaCropFertilizer } = CropZillaFertilizerGateway({ setZillaCropFertilizers });
+    
+
+    //Gateway
+    ZillaGateway({ setZillas });
+    CropGateway({ setCrops });
+    FertilizerGateway({ setFertilizers });
+    const { 
+        postZillaCropFertilizer,
+        deleteZillaCropFertilizer 
+    } = CropZillaFertilizerGateway({ setZillaCropFertilizers });
 
     const onButtonClick = () => {
         // Set initial error values to empty
@@ -110,6 +115,7 @@ const CropZillaFertilizerConfigure = () => {
                             value={zilla}
                             onChange={handleZilla}>
 
+                            <option value="">Select district</option>
                             {zillas.map(item => (
                                 <option key={item.id} value={item.id}>
                                     {item.name}
@@ -126,6 +132,7 @@ const CropZillaFertilizerConfigure = () => {
                             value={crop}
                             onChange={handleCrop}>
 
+                            <option value="">Select crop</option>
                             {crops.map(item => (
                                 <option key={item.id} value={item.id}>
                                     {item.name}
@@ -142,6 +149,7 @@ const CropZillaFertilizerConfigure = () => {
                             value={fertilizer}
                             onChange={handleFertilizer}>
 
+                            <option value="">Select fertilizer</option>
                             {fertilizers.map(item => (
                                 <option key={item.id} value={item.id}>
                                     {item.name}
@@ -156,7 +164,7 @@ const CropZillaFertilizerConfigure = () => {
                             placeholder="Enter fertilizer measure"
                             onChange={handleMeasure}
                             className={"inputBox"} />
-                        <label className="errorLabel">{handleMeasure}</label>
+                        <label className="errorLabel">{measureError}</label>
                     </div>
                     <br />
                     <div className={"inputContainer"}>
@@ -167,7 +175,9 @@ const CropZillaFertilizerConfigure = () => {
                             value={"Submit"} />
                     </div>
                 </div>
-                <ZillaCropFertilzerView zillaCropFertilzers={zillaCropFertilizers} />
+                <ZillaCropFertilzerView 
+                    zillaCropFertilzers={zillaCropFertilizers} 
+                    deleteZillaCropFertilizer={deleteZillaCropFertilizer} />
             </div>
         </>)
 

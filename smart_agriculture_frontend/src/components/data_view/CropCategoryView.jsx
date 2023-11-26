@@ -1,7 +1,7 @@
 import "./DataTable.scss"
 import { useState } from "react";
 
-const CropCategoryView = ({ cropCategories }) => {
+const CropCategoryView = ({ cropCategories, deleteCropCategory }) => {
 
     const [rows, setRows] = useState([
         { name: 'Alice', email: 'alice@example.com', editing: false },
@@ -24,23 +24,6 @@ const CropCategoryView = ({ cropCategories }) => {
         setRows(updatedRows);
     };
 
-    const saveRow = (row) => {
-        const updatedRows = rows.map((r) => {
-            if (r === row) {
-                return { ...r, editing: false };
-            }
-            return r;
-        });
-        setRows(updatedRows);
-    };
-
-    const deleteRow = (index) => {
-        const updatedRows = [...rows];
-        updatedRows.splice(index, 1);
-        setRows(updatedRows);
-    };
-
-
     return (
         <>
             <div>
@@ -59,10 +42,19 @@ const CropCategoryView = ({ cropCategories }) => {
                             <tr key={item.id}>
                                 <td>{item.id}</td>
                                 <td>{item.name}</td>
-                                <td>
-                                    {!item.editing && <button className="edit-button" onClick={() => editRow(item)}>Edit</button>}
-                                    {item.editing && <button className="save-button" onClick={() => saveRow(item)}>Save</button>}
-                                    <button className="delete-button" onClick={() => deleteRow(item.id)}>Delete</button>
+                                
+                                <td className="actionArea">
+                                    <button className="edit-button"
+                                        onClick={() => editRow(item)}>
+
+                                        <i className='bx bx-message-square-edit'></i>
+                                    </button>
+                                    <button
+                                        className="delete-button"
+                                        onClick={() => deleteCropCategory({ cropCategory: item })}>
+
+                                        <i className='bx bx-message-square-x'></i>
+                                    </button>
                                 </td>
                                 {/* Add more cells based on your data structure */}
                             </tr>

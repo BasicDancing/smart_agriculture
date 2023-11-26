@@ -7,9 +7,9 @@ import CropGateway from "../../gateway/CropGateway";
 const CalculatorForm = () => {
 
     const [division, setDivision] = useState("")
-    const [zilla, setZilla] = useState(1)
+    const [zilla, setZilla] = useState(0)
     const [cropCategory, setCropCategory] = useState("")
-    const [crop, setCrop] = useState(1)
+    const [crop, setCrop] = useState(0)
     const [measure, setMeasure] = useState("")
 
     const [divisionError, setDivisionError] = useState("")
@@ -25,9 +25,12 @@ const CalculatorForm = () => {
     const [fertilizers, setFertilizers] = useState([]);
     const [zillaCropFertilizers, setZillaCropFertilizers] = useState([])
 
-    const { fetchPost, postZillaCropFertilizers } = CropZillaFertilizerGateway({ setZillaCropFertilizers });
-    const { postCrop } = CropGateway({ setCrops })
-    const { postZilla } = ZillaGateway({ setZillas })
+    //Gateway
+    const { 
+        fetchPost 
+    } = CropZillaFertilizerGateway({ setZillaCropFertilizers });
+    CropGateway({ setCrops })
+    ZillaGateway({ setZillas })
 
     const onButtonClick = () => {
         // Set initial error values to empty
@@ -68,6 +71,7 @@ const CalculatorForm = () => {
                         value={zilla}
                         onChange={ev => setZilla(ev.target.value)}>
 
+                        <option value="">Select district</option>
                         {zillas.map(item => (
                             <option key={item.id} value={item.id}>
                                 {item.name}
@@ -83,7 +87,8 @@ const CalculatorForm = () => {
                         className={"inputBox"}
                         value={crop}
                         onChange={ev => setCrop(ev.target.value)}>
-
+                        
+                        <option value="">Select crop</option>
                         {crops.map(item => (
                             <option key={item.id} value={item.id}>
                                 {item.name}

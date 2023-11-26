@@ -9,7 +9,11 @@ const PostConfigure = () => {
 
     const [titleError, setTitleError] = useState("")
 
-    const { postPost } = PostGateway({ setPosts })
+    //Gateway
+    const {
+        postPost,
+        deletePost
+    } = PostGateway({ setPosts })
 
     const onButtonClick = () => {
         // Set initial error values to empty
@@ -88,7 +92,9 @@ const PostConfigure = () => {
                             value={"Submit"} />
                     </div>
                 </div>
-                <PostView posts={posts} />
+                <PostView
+                    posts={posts} 
+                    deletePost={deletePost} />
             </div>
         </>)
 };
