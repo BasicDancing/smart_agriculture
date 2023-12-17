@@ -75,7 +75,7 @@ const Sidebar = () => {
             <div className='sidebar'>
                 <div className='sidebar__top'>
                     <div className="sidebar__logo">
-                        Smart Agriculture
+                        Krishoker Shathi
                     </div>
                     <div ref={sidebarRef} className="sidebar__menu">
                         <div
